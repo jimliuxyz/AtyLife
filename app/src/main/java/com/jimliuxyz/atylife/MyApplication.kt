@@ -5,7 +5,12 @@ import android.os.Build
 
 class MyApplication : Application() {
 
+    companion object {
+        lateinit var instance: MyApplication
+    }
+
     override fun onCreate() {
+        instance = this
         super.onCreate()
         LifeLog.add("AppCreate", "red")
         LifeLog.add("RELEASE:${Build.VERSION.RELEASE}")

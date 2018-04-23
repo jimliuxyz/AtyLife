@@ -1,6 +1,9 @@
 package com.jimliuxyz.atylife
 
+import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
 import android.view.View
@@ -74,7 +77,24 @@ class MainActivity : AppCompatActivity() {
     fun doFinish(view: View){
         finish()
     }
+
+    fun doNorAlert(view: View){
+        var builder = AlertDialog.Builder(this)
+        builder.setMessage("test...")
+                .setTitle("Normal Alert")
+                .setPositiveButton("OK"){ dialogInterface: DialogInterface, i: Int ->
+                    println("ok~")
+                }
+
+        builder.create().show()
+    }
+
+    fun doDialogAct(view: View) {
+        val serverIntent = Intent(this, DialogActivity::class.java)
+        startActivity(serverIntent)
+    }
 }
+
 
 data class Item(var event: String, var color: String?, var hint: String?) {
     fun toHtml(): String {
